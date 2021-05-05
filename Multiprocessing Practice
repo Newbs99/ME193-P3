@@ -1,0 +1,43 @@
+from multiprocessing import Pool
+import multiprocessing
+import time
+
+start=time.time()
+import math
+from math import sqrt
+from math import exp
+from math import cos
+
+n=10000000
+sum=0
+i=1
+dt=1/100
+x=1
+xd=2
+xdd=3
+
+
+def roundone(i,sum):
+        while i<n:
+                sum = (sum+i)^2
+                i=i+1
+
+def roundtwo():
+        a=3*exp(5)
+        b=5*exp(5)
+        e=(a*b)/100
+        print(cos(e))
+
+def roundthree(time,start):
+        print('All done!')
+        end = time.time()
+        ttime=end-start
+        print('time elapsed:', ttime )
+
+p1=multiprocessing.Process(target=roundone(i,sum))
+p2=multiprocessing.Process(target=roundtwo)
+p3=multiprocessing.Process(target=roundthree(time,start))
+
+p1.start()
+p2.start()
+p3.start()
